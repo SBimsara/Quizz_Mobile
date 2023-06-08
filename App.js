@@ -23,13 +23,15 @@ import { StyleSheet, View } from "react-native";
 import SlashScreen from "./src/screens/SlashScreen";
 import NameRegistration from "./src/screens/Registration/NameRegistration";
 import SubjectRegistration from "./src/screens/Registration/SubjectRegistration";
+import SubcriptionPlans from "./src/screens/Subcription/SubcriptionPlans";
 
 const App = () => {
   return (
     <View style={styles.container}>
       {/* <NameRegistration /> */}
       {/* <SlashScreen /> */}
-      <SubjectRegistration />
+      {/* <SubjectRegistration /> */}
+      <SubcriptionPlans />
     </View>
   );
 };
