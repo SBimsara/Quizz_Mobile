@@ -2,21 +2,28 @@ import React from "react";
 import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
 import OnlineTest from "../../assets/images/OnlineTest.png";
 
+import { NativeBaseProvider, Button } from "native-base";
+
 const SlashScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Image
-        style={[styles.slashImg, styles.moveUp]}
-        source={require("../../assets/images/OnlineTest.png")}
-      />
-      <Text style={[styles.title, styles.moveUp]}>
-        Get your knowledge tested
-      </Text>
-      <View style={styles.signIn}>
-        <Text>Already have an accont?</Text>
-        <Text style={styles.signInText}> Sign in</Text>
-      </View>
-    </SafeAreaView>
+    <NativeBaseProvider>
+      <SafeAreaView style={styles.container}>
+        <Image
+          style={[styles.slashImg, styles.moveUp]}
+          source={require("../../assets/images/OnlineTest.png")}
+        />
+        <Text style={[styles.title, styles.moveUp]}>
+          Get your knowledge tested
+        </Text>
+        <Button style={[styles.slashBtn, styles.moveDown]}>
+          <Text style={styles.btnTxt}>Get Started</Text>
+        </Button>
+        <View style={[styles.signIn, styles.moveDown]}>
+          <Text>Already have an accont?</Text>
+          <Text style={styles.signInText}> Sign in</Text>
+        </View>
+      </SafeAreaView>
+    </NativeBaseProvider>
   );
 };
 
@@ -39,10 +46,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   moveUp: {
-    transform: [{ translateY: -150 }],
+    transform: [{ translateY: -120 }],
   },
   moveDown: {
-    transform: [{ translateY: 150 }],
+    transform: [{ translateY: 100 }],
   },
   signIn: {
     flexDirection: "row",
@@ -51,6 +58,16 @@ const styles = StyleSheet.create({
   signInText: {
     color: "#086788",
     fontWeight: "bold",
+  },
+  slashBtn: {
+    width: 300,
+    height: 45,
+    marginBottom: 8,
+  },
+  btnTxt: {
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "#fff",
   },
 });
 
