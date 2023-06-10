@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   signIn: {
     flexDirection: "row",
     alignItems: "center",
+    marginTop: 10,
   },
   signInText: {
     color: "#086788",
