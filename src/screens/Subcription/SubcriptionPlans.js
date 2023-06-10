@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
 
 import { NativeBaseProvider, Input, Button, VStack, Select } from "native-base";
+import axios from "axios";
+
 import SubscriptionCard from "../../components/SubscriptionCard";
 
 const SubcriptionPlans = () => {
@@ -20,7 +22,7 @@ const SubcriptionPlans = () => {
         <SubscriptionCard
           title="Premium"
           price="2000"
-          description="The best plan you can get"
+          description="Unlock limitless possibilities with our Premium Subscription Plan!"
         />
       </SafeAreaView>
     </NativeBaseProvider>

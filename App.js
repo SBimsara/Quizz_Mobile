@@ -24,6 +24,7 @@ import SlashScreen from "./src/screens/SlashScreen";
 import NameRegistration from "./src/screens/Registration/NameRegistration";
 import SubjectRegistration from "./src/screens/Registration/SubjectRegistration";
 import SubcriptionPlans from "./src/screens/Subcription/SubcriptionPlans";
+import Plan from "./src/screens/Subcription/Plan";
 
 const App = () => {
   return (
@@ -31,7 +32,8 @@ const App = () => {
       {/* <NameRegistration /> */}
       {/* <SlashScreen /> */}
       {/* <SubjectRegistration /> */}
-      <SubcriptionPlans />
+      {/* <SubcriptionPlans /> */}
+      <Plan />
     </View>
   );
 };
