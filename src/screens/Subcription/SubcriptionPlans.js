@@ -3,6 +3,7 @@ import React from "react";
 import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
 
 import { NativeBaseProvider, Input, Button, VStack, Select } from "native-base";
+import SubscriptionCard from "../../components/SubscriptionCard";
 
 const SubcriptionPlans = () => {
   return (
@@ -15,6 +16,12 @@ const SubcriptionPlans = () => {
           If yoy want more time to decide select the free plan and change it
           later
         </Text>
+
+        <SubscriptionCard
+          title="Premium"
+          price="2000"
+          description="The best plan you can get"
+        />
       </SafeAreaView>
     </NativeBaseProvider>
   );
@@ -38,7 +45,7 @@ const styles = StyleSheet.create({
     marginLeft: 35,
   },
   moveUp: {
-    transform: [{ translateY: -240 }],
+    transform: [{ translateY: -120 }],
   },
 });
 export default SubcriptionPlans;
