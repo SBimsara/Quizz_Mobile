@@ -21,11 +21,12 @@
 
 import { StyleSheet, View } from "react-native";
 import SlashScreen from "./src/screens/SlashScreen";
+import HomeScreen from "./src/screens/HomeScreen";
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <SlashScreen />
+      <HomeScreen />
     </View>
   );
 };
