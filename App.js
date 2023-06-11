@@ -26,15 +26,44 @@ import SubjectRegistration from "./src/screens/Registration/SubjectRegistration"
 import SubcriptionPlans from "./src/screens/Subcription/SubcriptionPlans";
 import Plan from "./src/screens/Subcription/Plan";
 
+import { StripeProvider } from "@stripe/stripe-react-native";
+import PaymentScreen from "./src/screens/Subcription/PaymentScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <View style={styles.container}>
-      {/* <NameRegistration /> */}
-      {/* <SlashScreen /> */}
-      {/* <SubjectRegistration /> */}
-      {/* <SubcriptionPlans /> */}
-      <Plan />
-    </View>
+    // <View style={styles.container}>
+    //   {/* <NameRegistration /> */}
+    //   {/* <SlashScreen /> */}
+    //   {/* <SubjectRegistration /> */}
+
+    //   {/* <Plan /> */}
+    //   {/* <StripeProvider >
+    //     <PaymentScreen />
+    //   </StripeProvider> */}
+    //   <SubcriptionPlans />
+    // </View>
+
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Subcription Plans"
+          component={SubcriptionPlans}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Plan"
+          component={Plan}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

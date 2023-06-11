@@ -1,17 +1,23 @@
 import { NativeBaseProvider } from "native-base";
 import React from "react";
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 
-const SubscriptionCard = ({ title, price, description }) => {
+const SubscriptionCard = ({ title, price, description, onPress }) => {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPress}>
       <View style={styles.mainContent}>
         <Text style={styles.cardTitle}>{title}</Text>
         <Text style={styles.price}>Rs.{price}</Text>
       </View>
 
       <Text style={styles.description}>{description}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

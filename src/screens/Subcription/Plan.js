@@ -1,9 +1,42 @@
 import { Button, NativeBaseProvider } from "native-base";
-import React from "react";
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+} from "react-native";
 
-const Plan = (props) => {
-  const { data, title } = props;
+import axios from "axios";
+const Plan = ({ navigation, route }) => {
+  const { planId } = route.params;
+
+  const [isLoading, setIsloading] = useState(true);
+
+  useEffect(() => {
+    getPlanById(planId);
+  }, []);
+
+  const getPlanById = async () => {
+    try {
+      const response = await axios.get(
+        `http:///192.168.1.101:8080/api/v1/plan/getPlanById/${planId}`
+      );
+      console.log(response.data.content);
+      setIsloading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size={"large"} color={"blue"} />
+      </View>
+    );
+  }
+
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
@@ -39,7 +72,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: 300,
-    height: 45,
+    height: 50,
   },
   title: {
     fontSize: 35,
