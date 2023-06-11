@@ -22,13 +22,10 @@
 import { StyleSheet, View } from "react-native";
 import SlashScreen from "./src/screens/SlashScreen";
 import HomeScreen from "./src/screens/HomeScreen";
+import StackNavigator from "./StackNavigator";
 
 const App = () => {
-  return (
-    <View style={styles.container}>
-      <HomeScreen />
-    </View>
-  );
+  return <StackNavigator />;
 };
 
 const styles = StyleSheet.create({

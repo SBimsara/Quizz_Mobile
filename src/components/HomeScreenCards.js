@@ -8,20 +8,30 @@ import {
 } from "react-native";
 import React from "react";
 import HomeScreenData from "../data/HomeScreenData";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreenCards = () => {
   const hsData = HomeScreenData;
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       {hsData.map((item, key) => (
-        <View key={key} style={styles.homescreencard}>
-          <View style={styles.homescreencardtextProperties}>
-            <Text style={styles.homescreencardText}>{item.name}</Text>
+        <Pressable
+          key={key}
+          onPress={() => {
+            navigation.navigate({ name: item.navigate });
+          }}
+          style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
+        >
+          <View style={styles.homescreencard}>
+            <View style={styles.homescreencardtextProperties}>
+              <Text style={styles.homescreencardText}>{item.name}</Text>
+            </View>
+            <View style={styles.homescreencardImage}>
+              <Text>{item.image}</Text>
+            </View>
           </View>
-          <View style={styles.homescreencardImage}>
-            <Text>{item.image}</Text>
-          </View>
-        </View>
+        </Pressable>
       ))}
     </View>
   );
