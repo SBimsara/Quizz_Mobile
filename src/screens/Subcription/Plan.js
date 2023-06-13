@@ -9,10 +9,17 @@ import {
 } from "react-native";
 
 import axios from "axios";
+
+import { useStripe } from "@stripe/stripe-react-native";
+
 const Plan = ({ navigation, route }) => {
   const { planId } = route.params;
 
+  const stripe = useStripe();
+
   const [isLoading, setIsloading] = useState(true);
+  const [planData, setPlanData] = useState([]);
+  const [amount, setAmount] = useState(null);
 
   useEffect(() => {
     getPlanById(planId);
@@ -21,14 +28,60 @@ const Plan = ({ navigation, route }) => {
   const getPlanById = async () => {
     try {
       const response = await axios.get(
-        `http:///192.168.1.101:8080/api/v1/plan/getPlanById/${planId}`
+        `http://192.168.1.101:8080/api/v1/plan/getPlanById/${planId}`
       );
       console.log(response.data.content);
       setIsloading(false);
+      setPlanData(response.data.content);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const pay = async (amount) => {
+    const data = {
+      amount: amount,
+    };
+    try {
+      const response = await axios.post(
+        "http://192.168.1.101:8080/api/v1/payment/pay",
+        data
+      );
+      if (response.data.clientSecret == null) {
+        console.log(response.data.message);
+        return;
+      }
+      const clientSecret = response.data.clientSecret;
+      console.log(clientSecret);
+
+      const initSheet = await stripe.initPaymentSheet({
+        paymentIntentClientSecret: clientSecret,
+        merchantDisplayName: "Quizzer",
+      });
+
+      if (initSheet.error) {
+        console.error(initSheet.error);
+        console.log("InitSheet Error! ");
+        return;
+      }
+
+      const presentSheet = await stripe.presentPaymentSheet({
+        clientSecret,
+      });
+      if (presentSheet.error) {
+        console.error(presentSheet.error);
+        console.log("PresentSheet Error! ");
+        return;
+      }
+
+      console.log("Payment Successfull");
+    } catch (error) {
+      console.error(error);
+      console.log(error);
+      console.log("Payment failed!");
+    }
+  };
+
   if (isLoading) {
     return (
       <View style={styles.container}>
@@ -40,19 +93,24 @@ const Plan = ({ navigation, route }) => {
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
-        <Text style={[styles.title, styles.moveUp]}>Premium </Text>
+        <Text style={[styles.title, styles.moveUp]}>{planData.name}</Text>
 
         <Text style={[styles.description, styles.moveUp]}>
           Discover the ideal subscription plan tailored to your need, providing
           you with a seamless and enjoyable experience across all our services.
         </Text>
-
+        <View styles={styles.priceBox}>
+          <Text>Rs.{planData.price}</Text>
+        </View>
         <Button
           shadow={2}
-          onPress={() => console.log("hello world")}
+          onPress={() =>
+            // navigation.navigate("Payment Screen", { planData: planData })
+            pay(planData.price * (1 - planData.discount))
+          }
           style={[styles.btn, styles.moveDown]}
         >
-          Pay Now
+          Activate Now
         </Button>
       </SafeAreaView>
     </NativeBaseProvider>
@@ -95,6 +153,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "center",
     marginTop: 40,
+  },
+  priceBox: {
+    width: 300,
+    height: 150,
+    borderRadius: 5,
+    borderColor: "#1085AE",
+    backgroundColor: "blue",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

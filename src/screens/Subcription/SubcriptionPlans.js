@@ -10,7 +10,7 @@ import {
   ScrollView,
 } from "react-native";
 
-import { NativeBaseProvider, Input, Button, VStack, Select } from "native-base";
+import { NativeBaseProvider } from "native-base";
 import axios from "axios";
 
 import SubscriptionCard from "../../components/SubscriptionCard";
@@ -22,7 +22,7 @@ const SubcriptionPlans = ({ navigation }) => {
   const getPlanData = async () => {
     try {
       const response = await axios.get(
-        "http:///192.168.1.101:8080/api/v1/plan/getAllPlans"
+        "http://192.168.1.101:8080/api/v1/plan/getAllPlans"
       );
       // const data = await response.json();
       setPlanData(response.data.content);

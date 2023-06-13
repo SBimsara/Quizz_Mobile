@@ -30,6 +30,7 @@ import { StripeProvider } from "@stripe/stripe-react-native";
 import PaymentScreen from "./src/screens/Subcription/PaymentScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Test from "./src/screens/Subcription/Test";
 
 const Stack = createNativeStackNavigator();
 const App = () => {
@@ -43,27 +44,37 @@ const App = () => {
     //   {/* <StripeProvider >
     //     <PaymentScreen />
     //   </StripeProvider> */}
-    //   <SubcriptionPlans />
+    //   {/* <SubcriptionPlans /> */}
+    //   <Test />
     // </View>
+    <StripeProvider publishableKey="pk_test_51NHa3qSHQTfZ29uMyhXey9EXgQuQAyxiXmdRxdpYfE0JMKVoJ8wnuufMpAq4owqYE9wG2V8g36Rr44vcJb9CaPNZ00GwfyfAX4">
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Subcription Plans"
+            component={SubcriptionPlans}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Plan"
+            component={Plan}
+            options={{
+              headerShown: false,
+            }}
+          />
 
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Subcription Plans"
-          component={SubcriptionPlans}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Plan"
-          component={Plan}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+          {/* <Stack.Screen
+            name="Payment Screen"
+            component={PaymentScreen}
+            options={{
+              headerShown: false,
+            }}
+          /> */}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </StripeProvider>
   );
 };
 
