@@ -1,27 +1,22 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
-import OnlineTest from "../../assets/images/OnlineTest.png";
-
 import { NativeBaseProvider, Button } from "native-base";
+import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
 
-const SlashScreen = () => {
+// import Success from "../../../assets/images/Success.png";
+
+const PaymentSuccession = () => {
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
+        <Text style={[styles.title, styles.moveUp]}>Payment Successfull !</Text>
         <Image
-          style={[styles.slashImg, styles.moveUp]}
-          source={require("../../assets/images/OnlineTest.png")}
+          style={styles.slashImg}
+          source={require("../../../assets/images/Success.png")}
         />
-        <Text style={[styles.title, styles.moveUp]}>
-          Get your knowledge tested
-        </Text>
+
         <Button style={[styles.slashBtn, styles.moveDown]}>
-          <Text style={styles.btnTxt}>Get Started</Text>
+          <Text style={styles.btnTxt}>Proceed</Text>
         </Button>
-        <View style={[styles.signIn, styles.moveDown]}>
-          <Text>Already have an accont?</Text>
-          <Text style={styles.signInText}> Sign in</Text>
-        </View>
       </SafeAreaView>
     </NativeBaseProvider>
   );
@@ -30,7 +25,7 @@ const SlashScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F1FBFF",
+    backgroundColor: "#e6ffcc",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -42,11 +37,12 @@ const styles = StyleSheet.create({
     width: 300,
   },
   title: {
-    fontSize: 17,
+    fontSize: 23,
     fontWeight: "bold",
+    color: "#008000",
   },
   moveUp: {
-    transform: [{ translateY: -120 }],
+    transform: [{ translateY: -100 }],
   },
   moveDown: {
     transform: [{ translateY: 100 }],
@@ -64,6 +60,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 45,
     marginBottom: 8,
+    color: "#008000",
   },
   btnTxt: {
     fontSize: 17,
@@ -72,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SlashScreen;
+export default PaymentSuccession;

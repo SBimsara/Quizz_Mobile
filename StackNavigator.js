@@ -9,12 +9,21 @@ import AchievementsScreen from "./src/screens/AchievementsScreen";
 import SummaryScreen from "./src/screens/SummaryScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import AboutScreen from "./src/screens/AboutScreen";
+import PaymentSuccession from "./src/screens/Subcription/PaymentSuccession";
+import PaymentRejection from "./src/screens/Subcription/PaymentRejection";
+import SubcriptionPlans from "./src/screens/Subcription/SubcriptionPlans";
+import Plan from "./src/screens/Subcription/Plan";
+
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Subcription Plans" component={SubcriptionPlans} />
+        <Stack.Screen name="Plan" component={Plan} />
+        <Stack.Screen name="Payment Success" component={PaymentSuccession} />
+        <Stack.Screen name="Payment Rejection" component={PaymentRejection} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Subject" component={SubjectScreen} />
         <Stack.Screen name="Leaderboard" component={LeaderboardScreen} />
@@ -28,5 +37,3 @@ const StackNavigator = () => {
 };
 
 export default StackNavigator;
-
-const styles = StyleSheet.create({});

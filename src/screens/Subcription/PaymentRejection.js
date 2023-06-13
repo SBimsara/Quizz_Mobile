@@ -1,31 +1,40 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
-import OnlineTest from "../../assets/images/OnlineTest.png";
 
 import { NativeBaseProvider, Button } from "native-base";
-
-const SlashScreen = () => {
+import { SafeAreaView, Text, StyleSheet, Image, View } from "react-native";
+const PaymentRejection = () => {
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
+        <View style={styles.top}>
+          <Text style={[styles.title, styles.moveUp]}>Payment Denied !</Text>
+          <View style={styles.intro}>
+            <Text style={styles.moveUp}>
+              Oh no! your payment got denied. But we got you covered. We've
+              activated free plan for you now and comeback and change your plan
+              at some other time.
+            </Text>
+          </View>
+        </View>
+
         <Image
-          style={[styles.slashImg, styles.moveUp]}
-          source={require("../../assets/images/OnlineTest.png")}
+          style={styles.slashImg}
+          source={require("../../../assets/images/Denied.png")}
         />
-        <Text style={[styles.title, styles.moveUp]}>
-          Get your knowledge tested
-        </Text>
+
         <Button style={[styles.slashBtn, styles.moveDown]}>
-          <Text style={styles.btnTxt}>Get Started</Text>
+          <Text style={styles.btnTxt}>Proceed</Text>
         </Button>
-        <View style={[styles.signIn, styles.moveDown]}>
+        {/* <View style={[styles.signIn, styles.moveDown]}>
           <Text>Already have an accont?</Text>
           <Text style={styles.signInText}> Sign in</Text>
-        </View>
+        </View> */}
       </SafeAreaView>
     </NativeBaseProvider>
   );
 };
+
+export default PaymentRejection;
 
 const styles = StyleSheet.create({
   container: {
@@ -37,12 +46,21 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
+  top: {
+    marginTop: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  intro: {
+    width: 300,
+    marginTop: 30,
+  },
   slashImg: {
     height: 250,
     width: 300,
   },
   title: {
-    fontSize: 17,
+    fontSize: 22,
     fontWeight: "bold",
   },
   moveUp: {
@@ -71,5 +89,3 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
-
-export default SlashScreen;
