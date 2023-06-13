@@ -14,6 +14,7 @@ import { NativeBaseProvider } from "native-base";
 import axios from "axios";
 
 import SubscriptionCard from "../../components/SubscriptionCard";
+import api from "../../BaseURL";
 
 const SubcriptionPlans = ({ navigation }) => {
   const [isLoading, setIsloading] = useState(true);
@@ -21,9 +22,7 @@ const SubcriptionPlans = ({ navigation }) => {
 
   const getPlanData = async () => {
     try {
-      const response = await axios.get(
-        "http://192.168.1.101:8080/api/v1/plan/getAllPlans"
-      );
+      const response = await api.get("plan/getAllPlans");
       // const data = await response.json();
       setPlanData(response.data.content);
       setIsloading(false);

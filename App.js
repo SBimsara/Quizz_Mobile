@@ -37,47 +37,63 @@ import PaymentRejection from "./src/screens/Subcription/PaymentRejection";
 const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <View style={styles.container}>
-      {/* <NameRegistration /> */}
-      {/* <SlashScreen /> */}
-      {/* <SubjectRegistration /> */}
-      {/* <PaymentSuccession /> */}
-      <PaymentRejection />
-      {/* <Plan /> */}
-      {/* <StripeProvider >
-        <PaymentScreen />
-      </StripeProvider> */}
-      {/* <SubcriptionPlans /> */}
-      {/* <Test /> */}
-    </View>
-    // <StripeProvider publishableKey="pk_test_51NHa3qSHQTfZ29uMyhXey9EXgQuQAyxiXmdRxdpYfE0JMKVoJ8wnuufMpAq4owqYE9wG2V8g36Rr44vcJb9CaPNZ00GwfyfAX4">
-    //   <NavigationContainer>
-    //     <Stack.Navigator>
-    //       <Stack.Screen
-    //         name="Subcription Plans"
-    //         component={SubcriptionPlans}
-    //         options={{
-    //           headerShown: false,
-    //         }}
-    //       />
-    //       <Stack.Screen
-    //         name="Plan"
-    //         component={Plan}
-    //         options={{
-    //           headerShown: false,
-    //         }}
-    //       />
+    // <View style={styles.container}>
+    //   {/* <NameRegistration /> */}
+    //   {/* <SlashScreen /> */}
+    //   {/* <SubjectRegistration /> */}
+    //   {/* <PaymentSuccession /> */}
+    //   <PaymentRejection />
+    //   {/* <Plan /> */}
+    //   {/* <StripeProvider >
+    //     <PaymentScreen />
+    //   </StripeProvider> */}
+    //   {/* <SubcriptionPlans /> */}
+    //   {/* <Test /> */}
+    // </View>
+    <StripeProvider publishableKey="pk_test_51NHa3qSHQTfZ29uMyhXey9EXgQuQAyxiXmdRxdpYfE0JMKVoJ8wnuufMpAq4owqYE9wG2V8g36Rr44vcJb9CaPNZ00GwfyfAX4">
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Subcription Plans"
+            component={SubcriptionPlans}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Plan"
+            component={Plan}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Payment Success"
+            component={PaymentSuccession}
+            options={{
+              headerShown: false,
+              headerLeft: () => null, // disabled back navigation
+            }}
+          />
+          <Stack.Screen
+            name="Payment Rejection"
+            component={PaymentRejection}
+            options={{
+              headerShown: false,
+              headerLeft: () => null, // disabled back navigation
+            }}
+          />
 
-    //       {/* <Stack.Screen
-    //         name="Payment Screen"
-    //         component={PaymentScreen}
-    //         options={{
-    //           headerShown: false,
-    //         }}
-    //       /> */}
-    //     </Stack.Navigator>
-    //   </NavigationContainer>
-    // </StripeProvider>
+          {/* <Stack.Screen
+            name="Payment Screen"
+            component={PaymentScreen}
+            options={{
+              headerShown: false,
+            }}
+          /> */}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </StripeProvider>
   );
 };
 

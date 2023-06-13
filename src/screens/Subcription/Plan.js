@@ -11,10 +11,16 @@ import {
 import axios from "axios";
 
 import { useStripe } from "@stripe/stripe-react-native";
+import { useNavigation } from "@react-navigation/native";
+import api from "../../BaseURL";
+// // import api from "../../BaseURL";
 
-const Plan = ({ navigation, route }) => {
+// axios.defaults.baseURL = "http://192.168.1.101:8080/";
+
+const Plan = ({ route }) => {
   const { planId } = route.params;
 
+  const navigation = useNavigation();
   const stripe = useStripe();
 
   const [isLoading, setIsloading] = useState(true);
@@ -27,9 +33,7 @@ const Plan = ({ navigation, route }) => {
 
   const getPlanById = async () => {
     try {
-      const response = await axios.get(
-        `http://192.168.1.101:8080/api/v1/plan/getPlanById/${planId}`
-      );
+      const response = await api.get(`plan/getPlanById/${planId}`);
       console.log(response.data.content);
       setIsloading(false);
       setPlanData(response.data.content);
@@ -43,10 +47,7 @@ const Plan = ({ navigation, route }) => {
       amount: amount,
     };
     try {
-      const response = await axios.post(
-        "http://192.168.1.101:8080/api/v1/payment/pay",
-        data
-      );
+      const response = await api.post("payment/pay", data);
       if (response.data.clientSecret == null) {
         console.log(response.data.message);
         return;
@@ -62,6 +63,7 @@ const Plan = ({ navigation, route }) => {
       if (initSheet.error) {
         console.error(initSheet.error);
         console.log("InitSheet Error! ");
+        navigation.navigate("Payment Rejection");
         return;
       }
 
@@ -71,14 +73,17 @@ const Plan = ({ navigation, route }) => {
       if (presentSheet.error) {
         console.error(presentSheet.error);
         console.log("PresentSheet Error! ");
+        navigation.navigate("Payment Rejection");
         return;
       }
 
       console.log("Payment Successfull");
+      navigation.navigate("Payment Success");
     } catch (error) {
       console.error(error);
       console.log(error);
       console.log("Payment failed!");
+      navigation.navigate("Payment Rejection");
     }
   };
 
