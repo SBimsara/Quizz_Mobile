@@ -8,7 +8,7 @@ const PaymentSuccession = () => {
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
-        <Text style={[styles.title, styles.moveUp]}>Payment Successfull!</Text>
+        <Text style={[styles.title, styles.moveUp]}>Payment Successfull !</Text>
         <Image
           style={styles.slashImg}
           source={require("../../../assets/images/Success.png")}
