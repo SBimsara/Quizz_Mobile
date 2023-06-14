@@ -23,13 +23,23 @@ import { StyleSheet, View } from "react-native";
 import SlashScreen from "./src/screens/SlashScreen";
 import NameRegistration from "./src/screens/Registration/NameRegistration";
 import SubjectRegistration from "./src/screens/Registration/SubjectRegistration";
+import Login from "./src/screens/Login";
+import OTP from "./src/screens/OTP";
+import PasswordReset from "./src/screens/PasswordReset";
+import MobileNumber from "./src/screens/MobileNumber";
+import Password from "./src/screens/Password";
 
 const App = () => {
   return (
     <View style={styles.container}>
-      {/* <NameRegistration /> */}
+      {/*<NameRegistration />*/ }
       {/* <SlashScreen /> */}
-      <SubjectRegistration />
+      {/*<SubjectRegistration />*/}
+      {<Login/>}
+      {/*<OTP/>*/}
+      {/*<PasswordReset/>*/}
+      {/*<MobileNumber/>*/}
+      {/*<Password/>*/}
     </View>
   );
 };

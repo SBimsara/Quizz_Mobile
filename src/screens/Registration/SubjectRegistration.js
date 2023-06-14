@@ -7,6 +7,7 @@ import { NativeBaseProvider, Input, Button, VStack, Select } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import NextButton from "../../components/NextButton";
 import PreviousButton from "../../components/PreviousButton";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 const SubjectRegistration = () => {
   const [language, setLanguage] = useState("");
@@ -17,6 +18,7 @@ const SubjectRegistration = () => {
   return (
     <NativeBaseProvider>
       <SafeAreaView style={styles.container}>
+      <KeyboardAwareScrollView contentContainerStyle={styles.keyboardAwareContainer}>
         <Text style={styles.moveUp}>Now let's get your subjects selected</Text>
         <View style={styles.inputStack}>
           <VStack space={4} alignItems="center">
@@ -105,6 +107,7 @@ const SubjectRegistration = () => {
           <PreviousButton />
           <NextButton />
         </View>
+        </KeyboardAwareScrollView>
       </SafeAreaView>
     </NativeBaseProvider>
   );
@@ -114,6 +117,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F1FBFF",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  keyboardAwareContainer: {
+    flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
   },
