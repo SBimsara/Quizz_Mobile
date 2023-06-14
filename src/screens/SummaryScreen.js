@@ -1,7 +1,6 @@
 import { ImageBackground, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { useEffect } from "react";
-import axios from "axios";
 
 const SummaryScreen = () => {
   const sdata = { score: 8, totalQuestions: 10, numQuizzes: 3 };
@@ -16,7 +15,9 @@ const SummaryScreen = () => {
       >
         <View style={styles.contentContainer}>
           <Image
-            source={{uri: "https://previews.123rf.com/images/microbagrandioza/microbagrandioza1908/microbagrandioza190800022/128482292-business-targeting-achievement-concept-vector-flat-cartoon-graphic-design-illustration.jpg"}}
+            source={{
+              uri: "https://previews.123rf.com/images/microbagrandioza/microbagrandioza1908/microbagrandioza190800022/128482292-business-targeting-achievement-concept-vector-flat-cartoon-graphic-design-illustration.jpg",
+            }}
             style={styles.icon}
           />
           <Text style={styles.header}>Quiz Summary</Text>
