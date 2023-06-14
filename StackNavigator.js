@@ -9,6 +9,7 @@ import AchievementsScreen from "./src/screens/AchievementsScreen";
 import SummaryScreen from "./src/screens/SummaryScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import AboutScreen from "./src/screens/AboutScreen";
+import Lesson from "./src/screens/Lesson";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ const StackNavigator = () => {
         <Stack.Screen name="Summary" component={SummaryScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen name="Lesson" component={Lesson} />
       </Stack.Navigator>
     </NavigationContainer>
   );
