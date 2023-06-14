@@ -7,28 +7,28 @@ import api from "../BaseURL";
 //import { ViewPropTypes } from "deprecated-react-native-prop-types";
 
 export default class LeaderboardScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.stat = {
-      data: [],
-      isLoading: true,
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.stat = {
+  //     data: [],
+  //     isLoading: true,
+  //   };
+  // }
 
-  componentDidMount() {
-    this.fetchData();
-  }
+  // componentDidMount() {
+  //   this.fetchData();
+  // }
 
-  fetchData = async () => {
-    try {
-      const response = await api.get("points/getPoints");
-      console.log(response.result);
-      this.setStat({ data: response.data, isLoading: false });
-    } catch (error) {
-      console.error(error);
-      this.setStat({ isLoading: false });
-    }
-  };
+  // fetchData = async () => {
+  //   try {
+  //     const response = await api.get("points/getPoints");
+  //     console.log(response.result);
+  //     this.setStat({ data: response.data, isLoading: false });
+  //   } catch (error) {
+  //     console.error(error);
+  //     this.setStat({ isLoading: false });
+  //   }
+  // };
 
   state = {
     globalData: [

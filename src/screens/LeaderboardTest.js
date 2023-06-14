@@ -9,41 +9,41 @@ import api from "../BaseURL";
 const Leader = () => {
   const [globalData, setGlobalData] = useState([
     {
-      name: "We Tu Lo",
+      name: "Max",
       score: null,
       iconUrl:
         "https://st2.depositphotos.com/1006318/5909/v/950/depositphotos_59094043-stock-illustration-profile-icon-male-avatar.jpg",
     },
     {
-      name: "Adam Savage",
+      name: "Adam",
       score: 12,
       iconUrl:
         "https://www.shareicon.net/data/128x128/2016/09/15/829473_man_512x512.png",
     },
     {
-      name: "Derek Black",
+      name: "Black",
       score: 244,
       iconUrl: "http://ttsbilisim.com/wp-content/uploads/2014/09/20120807.png",
     },
     {
-      name: "Erika White",
+      name: "Erika",
       score: 0,
       iconUrl:
         "http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-eskimo-girl.png",
     },
     {
-      name: "Jimmy John",
+      name: "Jimmy",
       score: 20,
       iconUrl: "https://static.witei.com/static/img/profile_pics/avatar4.png",
     },
     {
-      name: "Joe Roddy",
+      name: "Joe",
       score: 69,
       iconUrl:
         "http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-braindead-zombie.png",
     },
     {
-      name: "Ericka Johannesburg",
+      name: "Micheal",
       score: 101,
       iconUrl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShPis8NLdplTV1AJx40z-KS8zdgaSPaCfNINLtQ-ENdPvrtMWz",
@@ -108,7 +108,7 @@ const Leader = () => {
   const [filter, setFilter] = useState(0);
   const [userRank, setUserRank] = useState(1);
   const [user, setUser] = useState({
-    name: "Joe Roddy",
+    name: "Jimmy",
     score: 69,
   });
 

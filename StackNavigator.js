@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import SubjectScreen from "./src/screens/SubjectScreen";
-import LeaderboardScreen from "./src/screens/LeaderboardScreen";
+//import LeaderboardScreen from "./src/screens/LeaderboardScreen";
 import AchievementsScreen from "./src/screens/AchievementsScreen";
 import SummaryScreen from "./src/screens/SummaryScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
@@ -13,14 +13,16 @@ import PaymentSuccession from "./src/screens/Subcription/PaymentSuccession";
 import PaymentRejection from "./src/screens/Subcription/PaymentRejection";
 import SubcriptionPlans from "./src/screens/Subcription/SubcriptionPlans";
 import Plan from "./src/screens/Subcription/Plan";
-import Leader from "./src/screens/LeaderboardTest";
+import LeaderboardTest from "./src/screens/LeaderboardTest";
+//import Leader from "./src/screens/LeaderboardTest";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Leaderboard" component={Leader} />
+        <Stack.Screen name="LeaderboardTest" component={LeaderboardTest} />
+        {/* <Stack.Screen name="Leaderboard" component={Leader} /> */}
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Subcription Plans" component={SubcriptionPlans} />
         <Stack.Screen name="Plan" component={Plan} />
