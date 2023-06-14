@@ -1,10 +1,35 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { View, Alert, Image, Text } from "react-native";
 //import { ButtonGroup } from "react-native-elements";
 import Leaderboard from "react-native-leaderboard";
+import api from "../BaseURL";
 //import { ViewPropTypes } from "deprecated-react-native-prop-types";
 
 export default class LeaderboardScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.stat = {
+      data: [],
+      isLoading: true,
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = async () => {
+    try {
+      const response = await api.get("points/getPoints");
+      console.log(response.result);
+      this.setStat({ data: response.data, isLoading: false });
+    } catch (error) {
+      console.error(error);
+      this.setStat({ isLoading: false });
+    }
+  };
+
   state = {
     globalData: [
       {
@@ -189,6 +214,8 @@ export default class LeaderboardScreen extends Component {
   }
 
   render() {
+    const { data } = this.stat;
+
     // const props = {
     //   labelBy: "name",
     //   sortBy: "score",
@@ -230,33 +257,3 @@ const ordinal_suffix_of = (i) => {
   }
   return i + "th";
 };
-
-// import { Text, StyleSheet, View } from "react-native";
-// import React, { Component } from "react";
-// import Leaderboard from "react-native-leaderboard";
-// import { SafeAreaView } from "react-native-safe-area-context";
-
-// const data = [
-//   { userName: "John", highScore: 100 },
-//   { userName: "Jane", highScore: 120 },
-//   // Add more user data
-// ];
-
-// export default class LeaderboardScreen extends Component {
-//   render() {
-//     return (
-//       <SafeAreaView>
-//         <Leaderboard
-//           data={data}
-//           sortBy="highScore"
-//           labelBy="userName"
-//           // sort="desc"
-//           evenRowColor="#e6f2ff"
-//           style={{ fontSize: 16, backgroundColor: "white" }}
-//         />
-//       </SafeAreaView>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({});
